@@ -18,7 +18,6 @@ export const FindMovie: React.FC<Props> = ({ onAddMovie, movies }) => {
   const [isError, setIsError] = useState(false);
   const [movieIsFound, setMovieIsFound] = useState(false);
 
-  const isDuplicate = movies.some(m => m.imdbId === movie?.imdbId);
 
   const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchInputMovie(event.target.value);
@@ -34,6 +33,8 @@ export const FindMovie: React.FC<Props> = ({ onAddMovie, movies }) => {
     if (!movie) {
       return;
     }
+
+    const isDuplicate = movies.some(m => m.imdbId === movie?.imdbId);
 
     if (isDuplicate) {
       setSearchInputMovie('');
